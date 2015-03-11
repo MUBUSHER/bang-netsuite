@@ -13,6 +13,11 @@ cd bang-netsuite
 npm install
 ```
 
+1. Log in to your NetSuite account
+2. Upload the files in `./restlets`
+3. Create and deploy RESTlet scripts for each file
+4. Update `lib/inventory_items.js` so ``SCRIPT`` and ``DEPLOY`` match the deploy URL.
+
 ## Use
 
 ```javascript
