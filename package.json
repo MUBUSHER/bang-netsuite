@@ -18,7 +18,8 @@
   "homepage": "https://github.com/rbwsam/bang-netsuite",
   "devDependencies": {
     "mocha": "^2.2.0",
-    "should": "^5.1.0"
+    "should": "^5.1.0",
+    "sinon": "^1.13.0"
   },
   "dependencies": {
     "rest": "^1.3.0"
