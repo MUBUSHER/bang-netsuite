@@ -9,6 +9,7 @@ All RESTlets are designed to be used by [bang](https://github.com/rbwsam/bang).
 
 ```
 git clone git@github.com:rbwsam/bang-netsuite.git
+cd bang-netsuite
 npm install
 ```
 
