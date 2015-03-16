@@ -1,3 +1,6 @@
+/* globals nlapiCreateRecord,nlapiSubmitRecord,nlapiLoadRecord */
+'use strict';
+
 // https://system.na1.netsuite.com/help/helpcenter/en_US/srbrowser/Browser2014_2/script/record/salesorder.html
 
 var RECORD_TYPE = 'salesorder';

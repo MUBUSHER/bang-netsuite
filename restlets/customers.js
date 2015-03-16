@@ -1,6 +1,9 @@
+/* globals nlapiCreateRecord,nlapiSubmitRecord,nlapiLoadRecord */
+'use strict';
+
 // https://system.na1.netsuite.com/help/helpcenter/en_US/srbrowser/Browser2014_2/script/record/customer.html
 
-RECORD_TYPE = 'customer';
+var RECORD_TYPE = 'customer';
 
 var missingParamsError = {
   status: 'failed',

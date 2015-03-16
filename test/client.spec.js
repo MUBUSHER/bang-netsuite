@@ -1,9 +1,12 @@
+/* globals describe,beforeEach,it */
+/* jshint expr: true */
 'use strict';
 
+require('should');
 var sinon = require('sinon');
-var should = require('should');
 var utils = require('./test_utils');
 var Client = require('../lib/client');
+
 
 var client = null;
 
@@ -13,15 +16,14 @@ describe('Client', function() {
   });
 
   describe('#get', function() {
-    it('calls rest with proper args', function() {
+    it('calls rest with params', function() {
       var spy = sinon.spy();
       var args = {
-        path: '/products',
         params: { active: true }
       };
 
       client.rest = spy;
-      client.get(args.path, args.params);
+      client.get(args.params);
       spy.calledOnce.should.be.true;
       spy.calledWith(args).should.be.true;
     });
@@ -32,13 +34,12 @@ describe('Client', function() {
       var spy = sinon.spy();
       var args = {
         method: 'POST',
-        path: '/products',
         params: { cache: false },
         entity: { name: 'lightsaber', color: 'blue' }
       };
 
       client.rest = spy;
-      client.post(args.path, args.params, args.entity);
+      client.post(args.params, args.entity);
       spy.calledOnce.should.be.true;
       spy.calledWith(args).should.be.true;
     });

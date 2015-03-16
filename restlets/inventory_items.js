@@ -1,3 +1,6 @@
+/* globals nlobjSearchFilter,nlobjSearchColumn,nlapiSearchRecord */
+'use strict';
+
 // https://system.na1.netsuite.com/help/helpcenter/en_US/Output/Help/SuiteCloudCustomizationScriptingWebServices/SuiteScript/SearchAPIs.html
 
 var RECORD_TYPE = 'inventoryitem';
