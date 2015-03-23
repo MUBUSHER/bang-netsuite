@@ -2,25 +2,38 @@
 /* jshint expr: true */
 'use strict';
 
-require('should');
+var should  = require('should');
 var Customer = require('../../lib/models/customer');
 
 describe('Customer', function() {
   describe('new', function () {
     it('requires specific attributes', function () {
+      should.throws(function() {
+        var customer = new Customer();
+      }, /attributes parameter is required/);
 
-      // Should throw assertion errors
-      // TODO: Validate error messages
-      var c = new Customer();
+      should.throws(function() {
+        var customer = new Customer({
+          firstname: 'Han'
+        });
+      }, /"lastname" attribute is required/);
+
+      should.throws(function() {
+        var customer = new Customer({
+          lastname: 'Solo'
+        });
+      }, /"firstname" attribute is required/);
     });
 
-    it('sets it\'s attributes', function() {
+    it('sets its attributes', function() {
       var attrs = {
-        name: 'Han Solo'
+        firstname: 'Han',
+        lastname: 'Solo'
       };
 
       var han = new Customer(attrs);
-      han.should.have.property('name', attrs.name);
+      han.should.have.property('firstname', attrs.firstname);
+      han.should.have.property('lastname', attrs.lastname);
     });
   });
 });
