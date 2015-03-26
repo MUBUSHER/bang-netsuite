@@ -3,6 +3,7 @@
 'use strict';
 
 require('should');
+var Q = require('Q');
 var sinon = require('sinon');
 var utils = require('./test_utils');
 var Client = require('../lib/client');
@@ -16,32 +17,34 @@ describe('Client', function() {
   });
 
   describe('#get', function() {
-    it('calls rest with params', function() {
-      var spy = sinon.spy();
+    it('calls the REST client and resolves the response body', function() {
       var args = {
         params: { active: true }
       };
+      var user = { fname: 'Han', lname: 'Solo' };
+      var stub = sinon.stub();
+      stub.withArgs(args).returns(Q(user));
+      client.rest = stub;
 
-      client.rest = spy;
-      client.get(args.params);
-      spy.calledOnce.should.be.true;
-      spy.calledWith(args).should.be.true;
+      client.get(args.params).then(function(entity) {
+        entity.should.eql(user);
+      });
     });
   });
 
   describe('#post', function() {
-    it('calls rest with proper args', function() {
-      var spy = sinon.spy();
+    it('calls the REST client and resolves the response body', function() {
       var args = {
         method: 'POST',
         params: { cache: false },
         entity: { name: 'lightsaber', color: 'blue' }
       };
+      var stub = sinon.stub();
+      stub.withArgs(args).returns(Q(args.entity));
 
-      client.rest = spy;
-      client.post(args.params, args.entity);
-      spy.calledOnce.should.be.true;
-      spy.calledWith(args).should.be.true;
+      client.post((args.params)).then(function(entity) {
+        entity.should.eql(args.entity);
+      });
     });
   });
 
