@@ -18,7 +18,9 @@ npm install
 3. Create and deploy RESTlet scripts for each file
 4. Update `lib/inventory_items.js` so ``SCRIPT`` and ``DEPLOY`` match the deploy URL.
 
-## Use
+## Documentation
+
+### The client
 
 ```javascript
 var NetSuite = require('bang/netsuite');
@@ -28,16 +30,48 @@ var ns = new NetSuite({
   password: 'YOUR NS PASSOWORD',
   company: 'YOUR NS COMPANY ID'
 });
+```
 
-var customer = ns.customers.find(id);
-var sales_order = ns.salesOrders.find(id);
-var inventory_item = ns.inventoryItem.find(id);
+### Customers
 
-var inventory_items = ns.inventoryItems.find(); // all
+```javascript
+// Find customer with id 42
+ns.customers.find(42).then(function(result) {
+  console.log(result); The customer
+}, function(err) {
+  console.log(err);
+});
 
-var customer = ns.customers.create({});
-var sales_order = ns.salesOrders.create({});
-var inventory_item = ns.inventoryItem.create({});
+// Create a customer that has great hair
+var han = { firstname: 'Han', lastname: 'Solo' }
+ns.customers.create(han).then(function(result) {
+  console.log(result); // The customer
+}, function(err) {
+  console.log(err);
+});
+```
+
+### Inventory Items
+
+```javascript
+// Get all Inventory Items (API limited to 1000)
+ns.inventoryItems.find().then(function(result) {
+  console.log(result); // Array of inventory items
+}, function(err) {
+  console.log(err);
+});
+```
+
+### Sales Orders
+
+```javascript
+// Create a Sales Order
+var so = {};
+ns.salesOrders.create(so).then(function(result) {
+  console.log(result); The sales order
+}, function(err) {
+  console.log(err);
+});
 ```
 
 ## Test
