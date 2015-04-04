@@ -4,7 +4,6 @@ A set of NetSuite RESTlets and a REST client for interacting with them.
 
 All RESTlets are designed to be used by [bang](https://github.com/rbwsam/bang).
 
-
 ## Install
 
 ```
@@ -13,12 +12,13 @@ cd bang-netsuite
 npm install
 ```
 
-1. Log in to your NetSuite account
+1. Login to your NetSuite account
 2. Upload the files in `./restlets`
 3. Create and deploy RESTlet scripts for each file
-4. Update `lib/inventory_items.js` so ``SCRIPT`` and ``DEPLOY`` match the deploy URL.
 
-## Documentation
+## Examples
+
+Also see generated documentation
 
 ### The client
 
@@ -27,7 +27,7 @@ var NetSuite = require('bang/netsuite');
 
 var ns = new NetSuite({
   email: 'YOUR NS EMAIL',
-  password: 'YOUR NS PASSOWORD',
+  password: 'YOUR NS PASSWORD',
   company: 'YOUR NS COMPANY ID'
 });
 ```
@@ -35,14 +35,14 @@ var ns = new NetSuite({
 ### Customers
 
 ```javascript
-// Find customer with id 42
+// Find customer
 ns.customers.find(42).then(function(result) {
   console.log(result); The customer
 }, function(err) {
   console.log(err);
 });
 
-// Create a customer that has great hair
+// Create a customer
 var han = { firstname: 'Han', lastname: 'Solo' }
 ns.customers.create(han).then(function(result) {
   console.log(result); // The customer
@@ -74,6 +74,21 @@ ns.salesOrders.create(so).then(function(result) {
 });
 ```
 
+## Documentation
+
+Generate documentation
+
+```javascript
+npm install -g yuidoc
+yuidoc . -o docs
+```
+
 ## Test
 
-```npm test```
+```
+npm test
+```
+
+## Todo
+
+Move SCRIPT and DEPLOY versions to config. Assert that they are set.

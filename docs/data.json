@@ -1,0 +1,275 @@
+{
+    "project": {},
+    "files": {
+        "lib/resources/customers.js": {
+            "name": "lib/resources/customers.js",
+            "modules": {},
+            "classes": {
+                "Customer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/resources/inventory_items.js": {
+            "name": "lib/resources/inventory_items.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/client.js": {
+            "name": "lib/client.js",
+            "modules": {},
+            "classes": {
+                "Client": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "restlets/customers.js": {
+            "name": "restlets/customers.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "restlets/inventory_items.js": {
+            "name": "restlets/inventory_items.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "restlets/sales_orders.js": {
+            "name": "restlets/sales_orders.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "Customer": {
+            "name": "Customer",
+            "shortname": "Customer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/resources/customers.js",
+            "line": 13,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "client",
+                    "description": "",
+                    "type": "Client"
+                }
+            ]
+        },
+        "Client": {
+            "name": "Client",
+            "shortname": "Client",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/client.js",
+            "line": 20,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "config",
+                    "description": ""
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/resources/customers.js",
+            "line": 19,
+            "description": "Get a customer",
+            "example": [
+                "\n    // Find the customer with id 42\n    var customers = new Customers(client);\n    customers.find(42).then(function(result) {\n      console.log(result);\n    }, function(err) {\n      console.log(err);\n    });"
+            ],
+            "itemtype": "method",
+            "name": "find",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "Resolves to a customer object",
+                "type": "Promise"
+            },
+            "class": "Customer"
+        },
+        {
+            "file": "lib/resources/customers.js",
+            "line": 39,
+            "description": "Create a customer",
+            "itemtype": "method",
+            "name": "create",
+            "params": [
+                {
+                    "name": "customer",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Resolves to a customer object",
+                "type": "Promise"
+            },
+            "class": "Customer"
+        },
+        {
+            "file": "lib/resources/inventory_items.js",
+            "line": 14,
+            "description": "Get all Inventory Items, max 1000",
+            "return": {
+                "description": "promise"
+            },
+            "class": "Client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 36,
+            "description": "Make a GET call to NetSuite",
+            "example": [
+                "\n    var client = new Client(config);\n    client.get({id: 42}).then(function(result) {\n      console.log(result);\n    }, function(err) {\n      console.log(err);\n    });"
+            ],
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "Query parameters",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Resolves to the body of the response",
+                "type": "Promise"
+            },
+            "class": "Client"
+        },
+        {
+            "file": "lib/client.js",
+            "line": 63,
+            "description": "Make a POST call to NetSuite",
+            "example": [
+                "\n    var client = new Client(config);\n    var entity = { firstname: 'Han', lastname: 'Solo' };\n    client.post(null, entity).then(function(body) {\n      console.log(body);\n    }, function(err) {\n      console.log(err);\n    });"
+            ],
+            "itemtype": "method",
+            "name": "post",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "Query parameters",
+                    "type": "Object"
+                },
+                {
+                    "name": "entity",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Resolves to the body of the response",
+                "type": "Promise"
+            },
+            "class": "Client"
+        },
+        {
+            "file": "restlets/customers.js",
+            "line": 13,
+            "description": "Creates a new customer.",
+            "params": [
+                {
+                    "name": "datain\n\nRESTlet",
+                    "description": "METHOD: POST",
+                    "type": "Object"
+                }
+            ],
+            "class": ""
+        },
+        {
+            "file": "restlets/customers.js",
+            "line": 41,
+            "description": "Retrieves a customer by ID.",
+            "params": [
+                {
+                    "name": "datain\n\nRESTlet",
+                    "description": "METHOD: GET",
+                    "type": "Object"
+                }
+            ],
+            "class": ""
+        },
+        {
+            "file": "restlets/inventory_items.js",
+            "line": 12,
+            "description": "Retrieves all Inventory Items marked for flash.\n\nInternal function nlapiSearchRecord() limits results to\n1000 items and truncates long text fields to 4000 characters.\n\nRESTlet METHOD: GET",
+            "class": ""
+        },
+        {
+            "file": "restlets/sales_orders.js",
+            "line": 8,
+            "description": "Creates a new sales order with the given Inventory Items.",
+            "params": [
+                {
+                    "name": "datain\n\nRESTlet",
+                    "description": "METHOD: POST",
+                    "type": "Object"
+                }
+            ],
+            "class": ""
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/resources/customers.js:39"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/resources/inventory_items.js:14"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/client.js:36"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/client.js:63"
+        },
+        {
+            "message": "Missing item type\nGet all Inventory Items, max 1000",
+            "line": " lib/resources/inventory_items.js:14"
+        },
+        {
+            "message": "Missing item type\nCreates a new customer.",
+            "line": " restlets/customers.js:13"
+        },
+        {
+            "message": "Missing item type\nRetrieves a customer by ID.",
+            "line": " restlets/customers.js:41"
+        },
+        {
+            "message": "Missing item type\nRetrieves all Inventory Items marked for flash.\n\nInternal function nlapiSearchRecord() limits results to\n1000 items and truncates long text fields to 4000 characters.\n\nRESTlet METHOD: GET",
+            "line": " restlets/inventory_items.js:12"
+        },
+        {
+            "message": "Missing item type\nCreates a new sales order with the given Inventory Items.",
+            "line": " restlets/sales_orders.js:8"
+        }
+    ]
+}
