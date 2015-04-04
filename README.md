@@ -36,7 +36,7 @@ var ns = new NetSuite({
 
 ```javascript
 // Find customer
-ns.customers.find(42).then(function(result) {
+ns.Customers.find(42).then(function(result) {
   console.log(result); The customer
 }, function(err) {
   console.log(err);
@@ -44,8 +44,9 @@ ns.customers.find(42).then(function(result) {
 
 // Create a customer
 var han = { firstname: 'Han', lastname: 'Solo' }
-ns.customers.create(han).then(function(result) {
-  console.log(result); // The customer
+
+ns.Customers.create(han).then(function(result) {
+  console.log(result); // The persisted customer
 }, function(err) {
   console.log(err);
 });
@@ -55,7 +56,7 @@ ns.customers.create(han).then(function(result) {
 
 ```javascript
 // Get all Inventory Items (API limited to 1000)
-ns.inventoryItems.find().then(function(result) {
+ns.InventoryItems.find().then(function(result) {
   console.log(result); // Array of inventory items
 }, function(err) {
   console.log(err);
@@ -66,21 +67,27 @@ ns.inventoryItems.find().then(function(result) {
 
 ```javascript
 // Create a Sales Order
-var so = {};
-ns.salesOrders.create(so).then(function(result) {
-  console.log(result); The sales order
+var salesOrder = {
+  customerId: 42,
+  items: [
+    {
+      id: 99,
+      quantity: 1,
+      amount: 1.99 // The total (quantity * item price)
+    },
+    {
+      id: 203,
+      quantity: 3,
+      amount: 5.97 // The total (quantity * item price)
+    }
+  ]
+};
+
+ns.SalesOrders.create(salesOrder).then(function(result) {
+  console.log(result); // The persisted sales order
 }, function(err) {
   console.log(err);
 });
-```
-
-## Documentation
-
-Generate documentation
-
-```javascript
-npm install -g yuidoc
-yuidoc . -o docs
 ```
 
 ## Test
