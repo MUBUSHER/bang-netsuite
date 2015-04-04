@@ -15,6 +15,7 @@ npm install
 1. Login to your NetSuite account
 2. Upload the files in `./restlets`
 3. Create and deploy RESTlet scripts for each file
+4. Update `SCRIPT` and `DEPLOY` for each class in `./lib/resources`
 
 ## Examples
 
@@ -95,7 +96,3 @@ ns.SalesOrders.create(salesOrder).then(function(result) {
 ```
 npm test
 ```
-
-## Todo
-
-Move SCRIPT and DEPLOY versions to config. Assert that they are set.
