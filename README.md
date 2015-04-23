@@ -7,9 +7,7 @@ All RESTlets are designed to be used by [bang](https://github.com/rbwsam/bang).
 ## Install
 
 ```
-git clone git@github.com:rbwsam/bang-netsuite.git
-cd bang-netsuite
-npm install
+npm install --save rbwsam/bang-netsuite
 ```
 
 1. Login to your NetSuite account
@@ -22,7 +20,7 @@ npm install
 ### The client
 
 ```javascript
-var NetSuite = require('bang/netsuite');
+var NetSuite = require('bang-netsuite');
 
 var ns = new NetSuite({
   email: 'YOUR NS EMAIL',
