@@ -19,8 +19,6 @@ npm install
 
 ## Examples
 
-Also see generated documentation
-
 ### The client
 
 ```javascript
